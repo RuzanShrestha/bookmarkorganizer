@@ -5,63 +5,107 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Smart Bookmark Organizer</title>
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background-color: #121212;
       color: #ffffff;
     }
+
     a {
       color: #4da6ff;
       text-decoration: none;
     }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+      background-color: #1a1a1a;
+      border-bottom: 1px solid #2a2a2a;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-left img {
+      height: 40px;
+      border-radius: 8px;
+    }
+
+    .nav-left span {
+      font-weight: 600;
+      font-size: 1.1em;
+    }
+
+    .nav-links a {
+      margin-left: 20px;
+      font-size: 0.95em;
+      color: #ccc;
+      transition: color 0.2s ease-in-out;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
     header {
-      padding: 40px 20px 10px;
       text-align: center;
+      padding: 40px 20px 20px;
     }
-    header img {
-      width: 80px;
-      height: 80px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-    }
+
     header h1 {
-      margin: 0;
       font-size: 2em;
+      margin-bottom: 10px;
     }
+
     header p {
       color: #bbb;
       font-size: 1.1em;
+      max-width: 600px;
+      margin: 0 auto;
     }
-    .section {
+
+    section {
       max-width: 800px;
       margin: 40px auto;
       padding: 0 20px;
     }
-    .box {
+
+    .card {
       background: #1e1e1e;
       border: 1px solid #2a2a2a;
       border-radius: 8px;
       padding: 20px;
       margin-bottom: 30px;
     }
-    .box h2 {
+
+    .card h2 {
       margin-top: 0;
       font-size: 1.5em;
     }
-    .box ul, .box ol {
+
+    .card ul, .card ol {
       padding-left: 20px;
     }
-    .flowchart {
-      font-family: monospace;
-      white-space: pre;
-      background: #0f0f0f;
-      padding: 15px;
-      border-radius: 6px;
-      font-size: 0.9em;
-      overflow-x: auto;
-      line-height: 1.6;
+
+    .screenshot {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 15px;
     }
+
     .how-to-use-toggle {
       background-color: #2a2a2a;
       border: none;
@@ -73,69 +117,98 @@
       margin: 10px 0;
       transition: background-color 0.2s ease-in-out;
     }
+
     .how-to-use-toggle:hover {
       background-color: #3a3a3a;
     }
+
     .hidden {
       display: none;
     }
+
     footer {
       text-align: center;
       color: #666;
       font-size: 0.9em;
       padding: 30px 0;
+      border-top: 1px solid #2a2a2a;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
 
+  <nav>
+    <div class="nav-left">
+      <img src="logo.png" alt="Smart Bookmark Logo">
+    </div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#screenshot">Screenshot</a>
+      <a href="#install">Install</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
   <header>
-    <img src="logo.png" alt="Smart Bookmark Logo">
     <h1>Smart Bookmark Organizer</h1>
-    <p>A modern, AI-powered way to keep your bookmarks clean and categorized.</p>
+    <p>A modern, AI-powered way to keep your Chrome bookmarks clean, categorized, and easy to find.</p>
   </header>
 
-  <div class="section">
-    <div class="box">
-      <h2>Features</h2>
-      <ul>
-        <li>Auto-categorizes bookmarks using AI (LLaMA 3 via GROQ)</li>
-        <li>Minimalist, dark-mode popup UI</li>
-        <li>One-click delete, reset, or refresh</li>
-        <li>Fully private – data is not stored</li>
-      </ul>
-      <button class="how-to-use-toggle" onclick="toggleHowToUse()">How to Use</button>
-      <div id="howToUseContent" class="hidden">
-        <p>You can delete bookmarks that have already been categorized by clicking the delete button beside them.</p>
-        <p>To refresh and re-categorize all of your bookmarks, press the <strong>Reset</strong> button. This will:</p>
+  <main>
+    <section id="features">
+      <div class="card">
+        <h2>Features</h2>
         <ul>
-          <li>Clear all existing categorized bookmarks</li>
-          <li>Re-fetch all your Chrome bookmarks</li>
-          <li>Re-run AI categorization from scratch</li>
-          <li>Display the newly categorized results again</li>
+          <li>Auto-categorizes bookmarks using AI (LLaMA 3 via GROQ)</li>
+          <li>Minimalist, dark-mode popup UI</li>
+          <li>One-click delete, reset, or refresh</li>
+          <li>Fully private – data is not stored</li>
         </ul>
-        <p>Use the Reset option carefully — it removes all previously categorized entries.</p>
+        <button class="how-to-use-toggle" onclick="toggleHowToUse()">How to Use</button>
+        <div id="howToUseContent" class="hidden">
+          <p>You can delete bookmarks that have already been categorized by clicking the delete button beside them.</p>
+          <p>To refresh and re-categorize all of your bookmarks, press the <strong>Reset</strong> button. This will:</p>
+          <ul>
+            <li>Clear all existing categorized bookmarks</li>
+            <li>Re-fetch all your Chrome bookmarks</li>
+            <li>Re-run AI categorization from scratch</li>
+            <li>Display the newly categorized results again</li>
+          </ul>
+          <p>Use the Reset option carefully — it removes all previously categorized entries.</p>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="box">
-      <h2>How to Install</h2>
-      <ol>
-        <li>Download the <code>.zip</code> file</li>
-        <li>Go to <a href="https://chrome://extensions" target="_blank">chrome://extensions</a></li>
-        <li>Enable "Developer mode"</li>
-        <li>Click "Load unpacked" and select the extracted folder</li>
-      </ol>
-    </div>
-    
-    <div class="box">
-      <h2>Get in Touch</h2>
-      <p>
-        View the source on <a href="https://github.com/your-repo" target="_blank">GitHub</a><br>
-        For feedback, contact <code>your.email@example.com</code>
-      </p>
-    </div>
-  </div>
+    <section id="screenshot">
+      <div class="card">
+        <h2>Screenshot</h2>
+        <img src="screenshot.png" alt="Extension UI Screenshot" class="screenshot">
+      </div>
+    </section>
+
+    <section id="install">
+      <div class="card">
+        <h2>How to Install</h2>
+        <ol>
+          <li>Download the <code>.zip</code> file</li>
+          <li>Go to <a href="https://chrome://extensions" target="_blank">chrome://extensions</a></li>
+          <li>Enable "Developer mode"</li>
+          <li>Click "Load unpacked" and select the extracted folder</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="card">
+        <h2>Get in Touch</h2>
+        <p>
+          View the source on <a href="https://github.com/RuzanShrestha/BookmarkExtension" target="_blank">GitHub</a><br>
+          For feedback, contact <code>shrestharujan15@gmail.com</code>
+        </p>
+      </div>
+    </section>
+  </main>
 
   <footer>
     &copy; 2025 Smart Bookmark Organizer
@@ -143,8 +216,7 @@
 
   <script>
     function toggleHowToUse() {
-      const content = document.getElementById('howToUseContent');
-      content.classList.toggle('hidden');
+      document.getElementById('howToUseContent').classList.toggle('hidden');
     }
   </script>
 
