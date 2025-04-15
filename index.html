@@ -145,7 +145,8 @@
     <div class="nav-links">
       <a href="#features">Features</a>
       <a href="#screenshot">Screenshot</a>
-      <a href="#install">Install</a>
+      <a href="#how-to-use">How to Use</a>
+      <a href="#how-it-works">How it Works</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
@@ -187,17 +188,36 @@
       </div>
     </section>
 
-    <section id="install">
+    <section id="how-to-use">
       <div class="card">
-        <h2>How to Install</h2>
+        <h2>How to Use</h2>
+        <p>To get started with Smart Bookmark Organizer:</p>
         <ol>
-          <li>Download the <code>.zip</code> file</li>
-          <li>Go to <a href="https://chrome://extensions" target="_blank">chrome://extensions</a></li>
-          <li>Enable "Developer mode"</li>
-          <li>Click "Load unpacked" and select the extracted folder</li>
+          <li>Install the extension from the <a href="https://chromewebstore.google.com/detail/nkllfeojmmgaklpkehjbjkkoobgfdcoh?utm_source=item-share-cb" target="_blank">Chrome Web Store</a>.</li>
+          <li>Click on the extension icon to open the popup.</li>
+          <li>Press the <strong>Reset</strong> button <em>once</em>.</li>
+          <li>Wait a few moments while it works in the background.</li>
+          <li>Reopen the popup later to see your categorized bookmarks.</li>
         </ol>
+        <p><strong>Note:</strong> Only press the Reset button once. It runs in the background and re-checks automatically.</p>
       </div>
     </section>
+    
+    <section id="how-it-works">
+      <div class="card">
+        <h2>How It Works</h2>
+        <p>When you open the Smart Bookmark Organizer and press Reset, here’s what happens behind the scenes:</p>
+        <ul>
+          <li>The popup UI fetches your Chrome bookmarks.</li>
+          <li>These bookmarks are sent to a secure backend (via Express API hosted on Render).</li>
+          <li>The backend sends the data to the GROQ API using LLaMA 3 to categorize each bookmark using AI.</li>
+          <li>The AI returns categorized results which are validated and sent back to the extension.</li>
+          <li>The popup UI displays the organized bookmarks for you to manage — delete, reset, or refresh.</li>
+        </ul>
+        <p>Your data is never stored — everything is processed securely and privately.</p>
+      </div>
+    </section>
+    
 
     <section id="contact">
       <div class="card">
